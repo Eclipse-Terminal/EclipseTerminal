@@ -1,0 +1,273 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-bull: var(--bull);
+  --color-bear: var(--bear);
+  --color-neutralx: var(--neutralx);
+  --color-violet: var(--violetx);
+  --color-panel: var(--panel);
+  --color-gold: var(--gold);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-blue: var(--surface-blue);
+  --color-surface-border: var(--surface-border);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Space Grotesk", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* ECLIPSE Terminal Color Palette */
+  --background: #0a0d14;
+  --foreground: #f8fafc;
+  --panel: #121620;
+  --card: #121620;
+  --card-foreground: #f8fafc;
+  --popover: #121620;
+  --popover-foreground: #f8fafc;
+  --primary: #2e5bff;
+  --primary-foreground: #ffffff;
+  --secondary: #1a202c;
+  --secondary-foreground: #94a3b8;
+  --muted: #1a202c;
+  --muted-foreground: #94a3b8;
+  --accent: #d4af37;
+  --accent-foreground: #0a0d14;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #121620;
+  --ring: #2e5bff;
+  --bull: #10b981;
+  --bear: #ef4444;
+  --neutralx: #00e5ff;
+  --violetx: #2e5bff;
+  --gradient-brand: linear-gradient(100deg, #2e5bff, #00e5ff, #d4af37);
+  --shadow-glow: 0 0 30px -8px rgba(46, 91, 255, 0.4);
+  --gold: #d4af37;
+  /* Light surfaces used by the Thndr-style screens */
+  --surface: #ffffff;
+  --surface-muted: #f4f6fb;
+  --surface-blue: #e7eefc;
+  --surface-border: #e3e8f0;
+  --ink: #0a0d14;
+  --ink-muted: #64748b;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, rgba(46, 91, 255, 0.08), transparent),
+      radial-gradient(700px 400px at 0% 0%, rgba(212, 175, 55, 0.05), transparent);
+    background-attachment: fixed;
+  }
+}
+
+@utility brand-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glow-card {
+  background: rgba(18, 22, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(46, 91, 255, 0.4);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility tab-fade {
+  animation: tabfade 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes tabfade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility ticker-track {
+  animation: ticker-scroll 40s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+
+@utility live-dot {
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+/* تأثير النبض أو التوهج المضيء للوجو والأزرار */
+@keyframes eclipse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 15px rgba(46, 91, 255, 0.3),
+      inset 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(46, 91, 255, 0.6),
+      inset 0 0 25px rgba(212, 175, 55, 0.4);
+  }
+}
+
+.animate-eclipse-glow {
+  animation: eclipse-glow 3s ease-in-out infinite;
+}
+
+/* تأثير ظهور سلس للعناصر عند التنقل بين التبويبات */
+@keyframes fade-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fade-scale {
+  animation: fade-scale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Thndr-style layout primitives (ECLIPSE palette) ───────────────── */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility rise {
+  animation: rise-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility press {
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@utility soft-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px -18px rgba(10, 13, 20, 0.45);
+}
+
+@utility dark-card {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+@keyframes logo-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 91, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 22px 2px rgba(46, 91, 255, 0.45);
+  }
+}
+
+@utility logo-glow {
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+@utility no-bar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .logo-glow,
+  .press {
+    animation: none !important;
+    transition: none !important;
+  }
+}

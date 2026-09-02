@@ -1,0 +1,6 @@
+{
+  "name": "EGX Pulse Terminal",
+  "description": "Comprehensive AI-driven financial dashboard tailored for Egyptian Stock Exchange (EGX) traders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

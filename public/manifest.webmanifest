@@ -1,0 +1,12 @@
+{
+  "name": "ECLIPSE — Market Intelligence Terminal",
+  "short_name": "ECLIPSE",
+  "description": "AI-driven market intelligence terminal for the Egyptian Stock Exchange — live prices, pattern detection and sentiment analysis.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0D14",
+  "theme_color": "#0A0D14",
+  "icons": [
+    { "src": "file_0000000068348210a3273a959a7bc029.png", "sizes": "64x64", "type": "image/png" }
+  ]
+}
